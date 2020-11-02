@@ -1,0 +1,30 @@
+{
+  "name": "jncinet/qihucms-menu",
+  "description": "qihucms menu.",
+  "keywords": [
+    "laravel",
+    "qihucms",
+    "menu"
+  ],
+  "homepage": "https://www.qihucms.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "zhangye",
+      "email": "y@qilephp.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Qihucms\\Menu\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Qihucms\\Menu\\MenuServiceProvider"
+      ]
+    }
+  }
+}
