@@ -7,9 +7,9 @@ Route::group([
     'prefix' => 'menu',
     'namespace' => 'Qihucms\Menu\Controllers\Api',
     'middleware' => ['api'],
-    'as' => 'api.'
+    'as' => 'api.menu.'
 ], function (Router $router) {
-    $router->get('menus', 'MenuController@index')->name('menu.menu.index');
+    $router->get('menus', 'MenuController@index')->name('index');
 });
 
 // 后台管理

@@ -37,11 +37,11 @@ class MenuController extends Controller
             $filter->equal('uri', __('menu::menu.uri'));
             $filter->equal('block', __('menu::menu.block'));
             $filter->like('title', __('menu::menu.title'));
-            $filter->equal('show_title', __('menu::menu.show_title'))->select(['否', '是']);
-            $filter->equal('show_icon', __('menu::menu.show_icon'))->select(['否', '是']);
-            $filter->equal('show_h5', __('menu::menu.show_h5'))->select(['否', '是']);
-            $filter->equal('show_mini_app', __('menu::menu.show_mini_app'))->select(['否', '是']);
-            $filter->equal('show_app', __('menu::menu.show_app'))->select(['否', '是']);
+            $filter->equal('show_title', __('menu::menu.show_title'))->select(__('menu::menu.is_val'));
+            $filter->equal('show_icon', __('menu::menu.show_icon'))->select(__('menu::menu.is_val'));
+            $filter->equal('show_h5', __('menu::menu.show_h5'))->select(__('menu::menu.is_val'));
+            $filter->equal('show_mini_app', __('menu::menu.show_mini_app'))->select(__('menu::menu.is_val'));
+            $filter->equal('show_app', __('menu::menu.show_app'))->select(__('menu::menu.is_val'));
         });
 
         $grid->column('icon', __('menu::menu.icon'))
@@ -76,15 +76,15 @@ class MenuController extends Controller
         $show->field('icon', __('menu::menu.unit.icon'))
             ->image();
         $show->field('show_title', __('menu::menu.show_title'))
-            ->using(['否', '是']);
+            ->using(__('menu::menu.is_val'));
         $show->field('show_icon', __('menu::menu.show_icon'))
-            ->using(['否', '是']);
+            ->using(__('menu::menu.is_val'));
         $show->field('show_h5', __('menu::menu.show_h5'))
-            ->using(['否', '是']);
+            ->using(__('menu::menu.is_val'));
         $show->field('show_mini_app', __('menu::menu.show_mini_app'))
-            ->using(['否', '是']);
+            ->using(__('menu::menu.is_val'));
         $show->field('show_app', __('menu::menu.show_app'))
-            ->using(['否', '是']);
+            ->using(__('menu::menu.is_val'));
         $show->field('permission', __('menu::menu.permission'));
         $show->field('created_at', __('admin.created_at'));
         $show->field('updated_at', __('admin.updated_at'));
@@ -102,27 +102,27 @@ class MenuController extends Controller
         $form = new Form(new MenuModel());
 
         $form->text('uri', __('menu::menu.uri'))
-            ->help('前端通过此标识获取菜单分类，一组菜单一个标识')->required();
+            ->help(__('menu::menu.uri_help'))->required();
         $form->text('block', __('menu::menu.block'))
-            ->help('分组标识，如会员管理中分组显示的菜单列表，没有分组留空');
+            ->help(__('menu::menu.block_help'));
         $form->text('title', __('menu::menu.title'));
         $form->image('icon', __('menu::menu.icon'))
             ->uniqueName()->removable()->move('menu');
         $form->text('url', __('menu::menu.url'))
-            ->help('调用系统功能参照后面填写（清除缓存：__clearCache__）');
+            ->help(__('menu::menu.url_help'));
         $form->radio('show_title', __('menu::menu.show_title'))
-            ->options(['否', '是']);
+            ->options(__('menu::menu.is_val'));
         $form->radio('show_icon', __('menu::menu.show_icon'))
-            ->options(['否', '是']);
+            ->options(__('menu::menu.is_val'));
         $form->radio('show_h5', __('menu::menu.show_h5'))
-            ->options(['否', '是']);
+            ->options(__('menu::menu.is_val'));
         $form->radio('show_mini_app', __('menu::menu.show_mini_app'))
-            ->options(['否', '是']);
+            ->options(__('menu::menu.is_val'));
         $form->radio('show_app', __('menu::menu.show_app'))
-            ->options(['否', '是']);
+            ->options(__('menu::menu.is_val'));
         $form->multipleSelect('roles', trans('admin.roles'))
             ->options(Role::all()->pluck('name', 'id'));
-        $form->select('permission', '选择权限')
+        $form->select('permission', __('menu::menu.permission'))
             ->options(Permission::all()->pluck('name', 'slug'));
         $form->number('sort', __('menu::menu.sort'))
             ->default(0);
