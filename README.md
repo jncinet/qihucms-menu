@@ -21,8 +21,6 @@ $ php artisan vendor:publish --provider="Qihucms\Menu\MenuServiceProvider"
 ## 后台菜单
 + 前端菜单 `menu/menus`
 
-get /menu/menus?uri={添加菜单时设置的标识}
-
 ### 路由能参数说明
 
 #### 礼物列表

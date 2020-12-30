@@ -4,7 +4,7 @@ use Illuminate\Routing\Router;
 
 // 接口
 Route::group([
-    'prefix' => 'menu',
+    'prefix' => config('qihu.menu_prefix', 'menu'),
     'namespace' => 'Qihucms\Menu\Controllers\Api',
     'middleware' => ['api'],
     'as' => 'api.menu.'
